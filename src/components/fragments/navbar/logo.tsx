@@ -12,7 +12,7 @@ export default function Logo({
   anchorElNav: null | HTMLElement;
   handleOpenNavMenu: (event: React.MouseEvent<HTMLElement>) => void;
   handleCloseNavMenu: () => void;
-  pages: string[];
+  pages: { menu: string; link: string }[];
 }>) {
   return (
     <>
@@ -55,8 +55,10 @@ export default function Logo({
           }}
         >
           {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
-              <Typography textAlign="center">{page}</Typography>
+            <MenuItem key={page.menu} onClick={handleCloseNavMenu}>
+              <Typography textAlign="center">
+                <Link href={`/${page.link.toLocaleLowerCase()}`}>{page.menu}</Link>
+              </Typography>
             </MenuItem>
           ))}
         </Menu>

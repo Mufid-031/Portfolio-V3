@@ -1,23 +1,26 @@
+import * as React from "react";
 import { Box, IconButton, Menu, MenuItem, Typography } from "@mui/material";
-import React from "react";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
 
 export default function SosmedIcon({
-  sosmedIcon,
   anchorElUser,
   handleOpenUserMenu,
   handleCloseUserMenu,
-  settings,
+  items,
 }: React.PropsWithChildren<{
-  sosmedIcon: null | React.ReactElement;
   anchorElUser: null | HTMLElement;
   handleOpenUserMenu: (event: React.MouseEvent<HTMLElement>) => void;
   handleCloseUserMenu: () => void;
-  settings: string[];
+  items: {
+    icon: JSX.Element;
+    item: string;
+    link: string;
+  }[];
 }>) {
   return (
     <Box sx={{ flexGrow: 0 }}>
       <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-        {sosmedIcon}
+        <PersonAddIcon sx={{ color: "white", fontSize: "2rem" }} />
       </IconButton>
       <Menu
         sx={{ mt: "45px" }}
@@ -35,9 +38,12 @@ export default function SosmedIcon({
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography textAlign="center">{setting}</Typography>
+        {items.map((item) => (
+          <MenuItem key={item.item} onClick={handleCloseUserMenu}>
+            {item.icon}
+            <Typography textAlign="center">
+              <a href={item.link} target="_blank">{item.item}</a>
+            </Typography>
           </MenuItem>
         ))}
       </Menu>

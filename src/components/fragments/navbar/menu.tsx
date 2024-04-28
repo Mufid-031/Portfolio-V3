@@ -23,12 +23,12 @@ export default function MenuNav({
         </Link>
       </Button>
       <Button className="relative" onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
-        <Link className={`${pathname === "/project" ? "after:absolute after:bottom-0 after:left-[10px] after:w-11 after:h-1 after:bg-white" : "text-slate-300"}`} href="/project">
+        <Link className={`${pathname === "/project" ? "after:absolute after:bottom-0 after:left-[10px] after:w-[66px] after:h-1 after:bg-white" : "text-slate-300"}`} href="/project">
           Project
         </Link>
       </Button>
       <Button className="relative" onClick={handleCloseNavMenu} sx={{ my: 2, color: "white", display: "block" }}>
-        <Link className={`${pathname === "/contact" ? "after:absolute after:bottom-0 after:left-[10px] after:w-11 after:h-1 after:bg-white" : "text-slate-300"}`} href="/contact">
+        <Link className={`${pathname === "/contact" ? "after:absolute after:bottom-0 after:left-[10px] after:w-[66px] after:h-1 after:bg-white" : "text-slate-300"}`} href="/contact">
           Contact
         </Link>
       </Button>
