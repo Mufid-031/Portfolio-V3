@@ -19,7 +19,7 @@ const Connector = styled(StepConnector)(({ theme }) => ({
     },
   },
   [`& .${stepConnectorClasses.line}`]: {
-    borderColor: theme.palette.mode === "dark" ? theme.palette.grey[800] : "#eaeaf0",
+    borderColor: theme.palette.mode === "dark" ? theme.palette.grey[800] : "#784af4",
     borderLeftWidth: 3,
     borderRadius: 1,
     height: 300,

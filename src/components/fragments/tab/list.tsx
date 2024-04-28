@@ -1,13 +1,21 @@
 import { TabList } from "@mui/lab";
-import { Tab } from "@mui/material";
+import { styled, Tab, Tabs } from "@mui/material";
 import React from "react";
 
-export default function CustomTabList({ handleChange }: React.PropsWithChildren<{ handleChange: (event: React.SyntheticEvent, newValue: string) => void }>) {
+const CustomIndicator = styled(TabList)<{ indicatorColor: string }>(({ indicatorColor }) => ({
+  "& .MuiTabList-root": {
+    color: "#885ef6",
+  },
+  "& .MuiTabs-indicator": {
+    backgroundColor: indicatorColor,
+  },
+}));
+
+export default function CustomTabList({ handleChange, value }: React.PropsWithChildren<{ handleChange: (event: React.SyntheticEvent, newValue: string) => void; value: string }>) {
   return (
-    <TabList sx={{ backgroundColor: "#2a2a2a", color: "#885ef6" }} onChange={handleChange} aria-label="lab API tabs example">
-      <Tab label="Item One" value="1" />
-      <Tab label="Item Two" value="2" />
-      <Tab label="Item Three" value="3" />
-    </TabList>
+    <Tabs sx={{ display : "flex", justifyContent: "center"}} value={value} onChange={handleChange} textColor="secondary" indicatorColor="secondary" aria-label="secondary tabs example">
+      <Tab sx={{color: "white"}} value="1" label="Skills" />
+      <Tab sx={{color: "white"}} value="2" label="Tools" />
+    </Tabs>
   );
 }

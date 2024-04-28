@@ -22,7 +22,7 @@ const config: Config = {
           "900": "#3d3d3d",
           "950": "#2a2a2a",
         },
-        "valhalla": {
+        valhalla: {
           "50": "#ededff",
           "100": "#e1dfff",
           "200": "#cac5ff",
@@ -48,7 +48,7 @@ const config: Config = {
           "900": "#076034",
           "950": "#00371b",
         },
-        "blue": {
+        blue: {
           "50": "#f2f2ff",
           "100": "#e9e7ff",
           "200": "#d6d3ff",
@@ -64,11 +64,9 @@ const config: Config = {
       },
     },
     dropShadow: {
-      "purple": [
-        "0 0 5px #714fff",
-        "0 0 10px #714fff",
-        "0 0 15px #714fff",
-      ]
+      purple: ["0 0 5px #714fff", "0 0 10px #714fff", "0 0 15px #714fff"],
+
+      valhalla: "0 0 10px #714fff",
     },
     keyframes: {
       wiggle: {

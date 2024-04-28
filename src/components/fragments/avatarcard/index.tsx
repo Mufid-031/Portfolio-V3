@@ -7,13 +7,21 @@ import Typography from "@mui/material/Typography";
 import Noise from "@/components/elements/3D/noise";
 import Hero from "@/../public/hero1.jpg";
 import Image from "next/image";
+import SkeletonSquare from "@/components/elements/skeleton/square";
 
 export default function AvatarCard() {
   const theme = useTheme();
+  const [isNoiseReady, setIsNoiseReady] = React.useState<boolean>(false);
+
+  React.useEffect(() => {
+    setTimeout(() => {
+      setIsNoiseReady(true)
+    }, 500)
+  }, [])
 
   return (
     <div className="relative">
-      <Card sx={{ display: { xs: "none", lg: "flex" }, position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)" }}>
+      <Card sx={{ display: { xs: "none", lg: "flex" }, position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", zIndex: 10 }}>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
             <Typography component="div" variant="h5" className="relative mb-4 text-valhalla-500 after:absolute after:-bottom-1 after:left-0 after:w-96 after:h-1 after:bg-valhalla-500">
@@ -26,7 +34,7 @@ export default function AvatarCard() {
         </Box>
         <Image src={Hero} alt="Hero" width={300} height={300} className="z-10" />
       </Card>
-      <Noise />
+      {isNoiseReady ? <Noise /> : <SkeletonSquare />}
     </div>
   );
 }
