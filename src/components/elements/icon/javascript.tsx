@@ -1,5 +1,5 @@
 import { IoLogoJavascript } from "react-icons/io";
 
 export default function JavaScriptIcon() {
-    return <IoLogoJavascript color="#F0DB4F" />
+    return <IoLogoJavascript color="#F0DB4F" size={"3.2rem"} />
 }
