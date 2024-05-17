@@ -3,23 +3,17 @@ import Box from "@mui/material/Box";
 import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import CustomTabList from "./list";
-import HtmlIcon from "@/components/elements/icon/html";
-import { Typography } from "@mui/material";
-import CssIcon from "@/components/elements/icon/css";
-import JavaScriptIcon from "@/components/elements/icon/javascript";
-import ReactIcon from "@/components/elements/icon/react";
-import BootstrapIcon from "@/components/elements/icon/bootstrap";
-import TailwindIcon from "@/components/elements/icon/tailwind";
-import NextJsIcon from "@/components/elements/icon/nextjs";
-import PhpIcon from "@/components/elements/icon/php";
-import LaravelIcon from "@/components/elements/icon/laravel";
-import TypescriptIcon from "@/components/elements/icon/typescript";
-import CustomKnob from "@/components/elements/knob";
+import TabPanel1 from "./tabpanel1";
+import CircularProgressWithLabel from "@/components/elements/circularprogress";
+import { FaBootstrap, FaCss3Alt, FaGithub, FaHtml5, FaLaravel, FaNpm, FaReact } from "react-icons/fa6";
+import { BsGit } from "react-icons/bs";
+import { RiJavascriptFill } from "react-icons/ri";
+import { SiMongodb, SiMysql, SiNextdotjs, SiPhp, SiPnpm, SiTailwindcss, SiTypescript } from "react-icons/si";
 
 export default function LabTabs() {
-  const [value, setValue] = React.useState("1");
+  const [value, setValue] = React.useState<string>("1");
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+  const handleChange : (event: React.SyntheticEvent, newValue: string) => void = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -28,62 +22,61 @@ export default function LabTabs() {
 
   const handleClickKnob: (newValue: number, newColor: string) => void = (newValue, newColor) => {
     setValueKnob(0);
-    setValueKnob(newValue);
-    setKnobColor(newColor);
+    setTimeout(() => {
+      setValueKnob(newValue);
+      setKnobColor(newColor);
+    }, 500);
   };
 
   return (
-    <Box sx={{ width: "100%", height: { lg: "100vh" }, typography: "body1", backgroundColor: "#2a2a2a", color: "white", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: { xs: "center", lg: "flex-start"} , position: "relative" }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: { lg: "100vh" },
+        typography: "body1",
+        backgroundColor: "#2a2a2a",
+        color: "white",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: { xs: "center", lg: "flex-start" },
+        position: "relative",
+      }}
+    >
       <TabContext value={value}>
-        <Box sx={{ borderBottom: 1, borderColor: "divider", pl: { xs: 0, lg: 10} }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider", pl: { xs: 0, lg: 10 } }}>
           <CustomTabList handleChange={handleChange} value={value} />
         </Box>
         <TabPanel value="1">
-          <div className="flex flex-wrap flex-grow gap-4 justify-center w-full lg:w-2/3">
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(90, "#E34F26")}>
-              <HtmlIcon />
-              <Typography variant="h5">Html</Typography>
+          <div className={`flex flex-wrap ${valueKnob === 0 ? "justify-start" : "justify-center"} w-full`}>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full lg:w-1/2 pl-11">
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={90} newColor="#E34F26" icon={<FaHtml5 color="#E34F26" size={"3.2rem"} />} content="Html" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={85} newColor="#1572B6" icon={<FaCss3Alt color="#1572B6" size={"3.2rem"} />} content="Css" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#F0DB4F" icon={<RiJavascriptFill color="#F0DB4F" size={"3.2rem"} />} content="Javascript" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={60} newColor="#7952B3" icon={<FaBootstrap color="#7952B3" size={"3.2rem"} />} content="Bootstrap" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#38BDF8" icon={<SiTailwindcss color="#38BDF8" size={"3.2rem"} />} content="Tailwind" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#61DBFB" icon={<FaReact color="#61DBFB" size={"3.2rem"} />} content="React" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={70} newColor="#ffffff" icon={<SiNextdotjs color="#000000" size={"3.2rem"} />} content="Next.js" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={60} newColor="#777BB3" icon={<SiPhp color="#777BB3" size={"3.2rem"} />} content="Php" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={50} newColor="#FF2D20" icon={<FaLaravel color="#FF2D20" size={"3.2rem"} />} content="Laravel" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={70} newColor="#3178c6" icon={<SiTypescript color="#3178c6" size={"2.4rem"} />} content="Typescript" />
             </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(80, "#1572B6")}>
-              <CssIcon />
-              <Typography variant="h5">Css</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(90, "#F0DB4F")}>
-              <JavaScriptIcon />
-              <Typography variant="h5">JavaScript</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(60, "#7952B3")}>
-              <BootstrapIcon />
-              <Typography variant="h5">Bootstrap</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(80, "#38BDF8")}>
-              <TailwindIcon />
-              <Typography variant="h5">Tailwind</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(80, "#61DBFB")}>
-              <ReactIcon />
-              <Typography variant="h5">React</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(70, "white")}>
-              <NextJsIcon />
-              <Typography variant="h5">NextJs</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(60, "#777BB3")}>
-              <PhpIcon />
-              <Typography variant="h5">Php</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(50, "#FF2D20")}>
-              <LaravelIcon />
-              <Typography variant="h5">Laravel</Typography>
-            </div>
-            <div className="w-40 h-16 bg-mine-shaft-950 border-2 border-[#885ef6] rounded-lg flex items-center gap-3 px-2" onClick={() => handleClickKnob(80, "#3178c6")}>
-              <TypescriptIcon />
-              <Typography variant="h5">Typescript</Typography>
-            </div>
-          {valueKnob !== 0 && <CustomKnob value={valueKnob} color={knobColor} />}
+            <CircularProgressWithLabel top={-100} value={valueKnob} color={knobColor} />
           </div>
         </TabPanel>
-        <TabPanel value="2">Item Two</TabPanel>
+        <TabPanel value="2">
+          <div className={`flex flex-wrap ${valueKnob === 0 ? "justify-start" : "justify-center"} w-full`}>
+            <div className="flex flex-wrap justify-center lg:justify-start gap-4 w-full lg:w-1/2 pl-11">
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#CB3837" icon={<FaNpm color="#CB3837" size={"3.2rem"} />} content="Npm" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={70} newColor="#F69220" icon={<SiPnpm color="#F69220" size={"2.6rem"} />} content="Pnpm" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={90} newColor="#F05032" icon={<BsGit color="#F05032" size={"2.9rem"} />} content="Git" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={60} newColor="#ffffff" icon={<FaGithub color="#000" size={"3.2rem"} />} content="Github" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#4DB33D" icon={<SiMongodb color="#4DB33D" size={"3.2rem"} />} content="MongoDB" />
+              <TabPanel1 handleClickKnob={handleClickKnob} newValue={80} newColor="#00758F" icon={<SiMysql color="#00758F" size={"3.2rem"} />} content="MySql" />
+            </div>
+            <CircularProgressWithLabel top={0} value={valueKnob} color={knobColor} />
+          </div>
+        </TabPanel>
       </TabContext>
     </Box>
   );

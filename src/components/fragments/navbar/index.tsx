@@ -39,6 +39,7 @@ export default function Navbar() {
     { menu: "Project", link: "/project" },
     { menu: "Contact", link: "/contact" },
   ];
+  
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
    

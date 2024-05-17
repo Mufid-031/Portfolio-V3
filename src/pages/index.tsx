@@ -1,6 +1,5 @@
 import Main from "@/components/fragments/main";
-import Navbar from "@/components/fragments/navbar"
-
+import Navbar from "@/components/fragments/navbar";
 
 function Home() {
   return (
@@ -8,7 +7,7 @@ function Home() {
       <Navbar />
       <Main />
     </>
-  )
+  );
 }
 
 export default Home;
